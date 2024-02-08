@@ -1,5 +1,8 @@
 package api.test;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -19,6 +22,7 @@ public class UserTests {
 	public void setupData() {
 		faker = new Faker();
 		userPayload = new User();
+		
 		userPayload.setId(faker.idNumber().hashCode());
 		userPayload.setUsername(faker.name().username());
 		userPayload.setFirstName(faker.name().firstName());
@@ -34,14 +38,14 @@ public class UserTests {
 	public void testPostUser() {
 		Response response = UserEndPoints.createUser(userPayload);
 		response.then().log().all();
-		Assert.assertEquals(response.getStatusCode(), 200);
+		AssertJUnit.assertEquals(response.getStatusCode(), 200);
 	}
 
 	@Test(priority = 2)
 	public void testGetUserByName() {
 		Response response = UserEndPoints.readUser(this.userPayload.getUsername());
 		response.then().log().all();
-		Assert.assertEquals(response.getStatusCode(), 200);
+		AssertJUnit.assertEquals(response.getStatusCode(), 200);
 
 	}
 
@@ -55,11 +59,11 @@ public class UserTests {
 
 		Response response = UserEndPoints.updateUser(this.userPayload.getUsername(), userPayload);
 		response.then().log().all();
-		Assert.assertEquals(response.getStatusCode(), 200);
+		AssertJUnit.assertEquals(response.getStatusCode(), 200);
 
 		// Checking data after update
 		Response responseAfterupdate = UserEndPoints.readUser(this.userPayload.getUsername());
-		Assert.assertEquals(response.getStatusCode(), 200);
+		AssertJUnit.assertEquals(response.getStatusCode(), 200);
 
 	}
 
@@ -68,7 +72,7 @@ public class UserTests {
 
 	{
 		Response response = UserEndPoints.deleteUser(this.userPayload.getUsername());
-		Assert.assertEquals(response.getStatusCode(), 200);
+		AssertJUnit.assertEquals(response.getStatusCode(), 200);
 	}
 
 }

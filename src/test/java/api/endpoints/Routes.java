@@ -1,6 +1,6 @@
 package api.endpoints;
 
-//We are only maintainng the URLs here in the Routes.java
+//We are only maintaining the URLs here in the Routes.java
 public class Routes {
 
 //	Swagger URI --> https://petstore.swagger.io

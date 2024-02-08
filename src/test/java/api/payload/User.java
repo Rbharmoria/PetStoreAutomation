@@ -2,6 +2,7 @@ package api.payload;
 
 public class User {
 
+	//Variables
 	int id;
 	String username;
 	String firstName;
@@ -11,6 +12,7 @@ public class User {
 	String phone;
 	int userStatus = 0;
 
+	//Generate getter setter for every variable to assign and return the value for these variables 
 	public int getId() {
 		return id;
 	}
@@ -23,8 +25,8 @@ public class User {
 		return username;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String userName) {
+		this.username = userName;
 	}
 
 	public String getFirstName() {
